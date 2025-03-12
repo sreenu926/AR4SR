@@ -23,7 +23,7 @@ function PricingModel({ formData }) {
         description={Lookup.LogoPricingModelDesc}
       />
 
-      <div className="grid grid-cols-1 gap-10">
+      <div className="grid grid-cols-2 gap-10">
         {Lookup.pricingOption.map((pricing, index) => (
           <div
             key={index}
@@ -47,15 +47,21 @@ function PricingModel({ formData }) {
             </div>
 
             {user ? (
-              <div className="flex gap-4">
-                <Link href={"/generate-logo?type=" + pricing.title}>
-                  <Button className="bg-red-500 mt-5">Hi User! Click Me</Button>
+              <div className="flex gap-4 mt-4">
+                <Link
+                  href={`/generate-logo?type=${encodeURIComponent(
+                    pricing.title
+                  )}`}
+                >
+                  <Button className="bg-red-500 mt-5">{pricing.button}</Button>
                 </Link>
               </div>
             ) : (
               <SignInButton
                 mode="modal"
-                forceRedirectUrl={"/generate-logo?type=" + pricing.title}
+                forceRedirectUrl={`/generate-logo?type=${encodeURIComponent(
+                  pricing.title
+                )}`}
               >
                 <Button className="bg-red-500 mt-5">Sign In</Button>
               </SignInButton>

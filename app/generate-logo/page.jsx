@@ -9,17 +9,26 @@ import HeadingDescription from "../create/_components/HeadingDescription";
 import Lookup from "../_data/Lookup";
 import { Download, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const GenerateLogo = () => {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [logoImage, setLogoImage] = useState();
+  const searchParams = useSearchParams();
+  const modelType = searchParams.get("type");
 
   const GenerateAILogo = async () => {
     if (!formData) {
       console.log("formData is null or undefined. Skipping GenerateAILogo.");
       return; // Exit the function if formData is not defined.
+    }
+
+    if (modelType != "Free" && userDetail?.credits <= 0) {
+      console.log("Not Enough Credits, Please Purchase Some.");
+      toast("Not Enough Credits, Please Purchase Some.");
+      return;
     }
 
     setLoading(true);
@@ -41,6 +50,8 @@ const GenerateLogo = () => {
         email: userDetail?.email,
         title: formData.title,
         desc: formData.desc,
+        type: modelType,
+        userCredits: userDetail?.credits,
       });
       console.log("result?.data?.image ", result?.data?.image);
       setLogoImage(result.data?.image);
@@ -55,7 +66,7 @@ const GenerateLogo = () => {
     // Create a temporary anchor element
     const link = document.createElement("a");
     link.href = imageSrc;
-    link.download = "AiImage.png"; // File name for download
+    link.download = "AiImage.webp"; // File name for download
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -76,13 +87,6 @@ const GenerateLogo = () => {
       }
     }
   }, [userDetail]);
-
-  // // Clear the localStorage when the logoImage is updated
-  // useEffect(() => {
-  //   if (typeof window != undefined && logoImage) {
-  //     localStorage.clear();
-  //   }
-  // }, [logoImage]);
 
   return (
     <div className="font-bold">
@@ -124,7 +128,7 @@ const GenerateLogo = () => {
           <div className="flex justify-center items-center mt-9 gap-8">
             <button
               onClick={() =>
-                handleImgDownload(logoImage ? logoImage : "/design_1.png")
+                handleImgDownload(logoImage ? logoImage : "/design_1.webp")
               }
               className="flex items-center gap-2 bg-purple-500 cursor-pointer text-white shadow-xl p-2 px-1.5 rounded-lg text-base"
             >

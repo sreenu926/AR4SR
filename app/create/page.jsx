@@ -54,12 +54,18 @@ function CreateLogo() {
 
       <div className="flex items-center justify-between mt-10">
         {step != 1 && (
-          <Button onClick={() => setStep(step - 1)} variant="outline">
-            <ArrowLeft /> Previous
-          </Button>
+          <div className="bg-black-700">
+            <Button onClick={() => setStep(step - 1)}>
+              <div className="flex gap-4 cursor-pointer">
+                <ArrowLeft /> Previous
+              </div>
+            </Button>
+          </div>
         )}
         <Button onClick={() => setStep(step + 1)} className="bg-red-500">
-          <ArrowRight /> Continue
+          <div className="flex gap-4 cursor-pointer">
+            Continue <ArrowRight />
+          </div>
         </Button>
       </div>
     </div>

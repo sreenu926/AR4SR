@@ -35,16 +35,16 @@ export default {
       ],
       button: "Generate Free",
     },
-    // {
-    //   title: "Premium",
-    //   icon: "/thunder.png", // Add your premium plan icon here
-    //   features: [
-    //     "⚫ Generate unlimited logos",
-    //     "⚫ Shorter wait times",
-    //     "⚫ Wait time: Less than 10 seconds",
-    //     "⚫ Only 5 Credits",
-    //   ],
-    //   button: "Generate Free",
-    // },
+    {
+      title: "Premium",
+      icon: "/thunder.png", // Add your premium plan icon here
+      features: [
+        "⚫ Generate unlimited logos",
+        "⚫ Shorter wait times",
+        "⚫ Wait time: Less than 10 seconds",
+        "⚫ Only 5 Credits",
+      ],
+      button: "Generate For 1 Credit",
+    },
   ],
 };

@@ -23,7 +23,6 @@ const GenerateLogo = () => {
 
   const GenerateAILogo = async () => {
     if (!formData || hasGenerated) return;
-    AI_ML_DL_PYTHON;
 
     if (modelType != "Free" && userDetail?.credits <= 0) {
       toast("Not Enough Credits, Please Purchase Some.");

@@ -15,7 +15,13 @@ function Header() {
   return (
     <div className="px-10 lg:px-32 xl:px-48 2xl:px-56 p-4 flex justify-between items-center shadow-sm">
       <Link href={"/"}>
-        <Image src={"/logo.svg"} alt="logo" width={100} height={0} />
+        <Image
+          unoptimized
+          src={"/logo.svg"}
+          alt="logo"
+          width={100}
+          height={0}
+        />
       </Link>
 
       {/* <div className="flex gap-2">
@@ -61,6 +67,7 @@ function Header() {
               width={32}
               height={32}
               alt="user icon"
+              unoptimized
             />
             <span>Account</span>
           </button>

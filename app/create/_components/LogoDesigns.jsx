@@ -33,6 +33,7 @@ function LogoDesigns({ onHandleInputChange, formData }) {
               alt={design.title}
               width={100}
               height={100}
+              unoptimized
             />
             <p>{design.title}</p>
           </div>

@@ -16,7 +16,13 @@ const Info = () => {
           Hello, <span className="text-red-500">{userDetail?.name}</span>
         </h2>
         <div className="flex items-center gap-2">
-          <Image src={"/coin.png"} alt="coin" width={40} height={40} />
+          <Image
+            unoptimized
+            src={"/coin.png"}
+            alt="coin"
+            width={40}
+            height={40}
+          />
           <h2 className="font-bold">{userDetail?.credits} Credits Left</h2>
         </div>
       </div>

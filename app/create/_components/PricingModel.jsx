@@ -34,6 +34,7 @@ function PricingModel({ formData }) {
               alt={pricing.title}
               width={60}
               height={60}
+              unoptimized
             />
 
             <h2 className="font-medium text-2xl">{pricing.title}</h2>

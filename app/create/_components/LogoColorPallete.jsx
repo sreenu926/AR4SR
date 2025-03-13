@@ -7,7 +7,7 @@ import Colors from "@/app/_data/Colors";
 function LogoColorPallete({ onHandleInputChange, formData }) {
   const [selectedOption, setSelectedOption] = useState(formData?.palette);
   return (
-    <div className="my-10">
+    <div className="my-0">
       <HeadingDescription
         title={Lookup.LogoColorPaletteTitle}
         description={Lookup.LogoColorPaletteDesc}
@@ -24,7 +24,7 @@ function LogoColorPallete({ onHandleInputChange, formData }) {
           >
             {palette?.colors.map((color, index) => (
               <div
-                className="h-24 w-full"
+                className="h-10 md:h-24 w-full"
                 key={index}
                 onClick={() => {
                   setSelectedOption(palette.name);

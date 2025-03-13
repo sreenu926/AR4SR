@@ -35,7 +35,7 @@ function LogoIdea({ formData, onHandleInputChange }) {
   };
 
   return (
-    <div className="my-10">
+    <div className="my-0">
       <HeadingDescription
         title={Lookup.LogoIdeaTitle}
         description={Lookup.LogoIdeaDesc}
@@ -43,7 +43,7 @@ function LogoIdea({ formData, onHandleInputChange }) {
       <div className="flex items-center justify-center">
         {loading && <Loader2Icon className="animate-spin my-10" />}
       </div>
-      <div className="flex flex-wrap gap-3 mt-6">
+      <div className="flex items-center justify-center text-sm md:text-lg flex-wrap gap-3 mt-0">
         {ideas &&
           ideas.map((item, index) => (
             <h2

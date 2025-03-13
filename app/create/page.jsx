@@ -19,7 +19,7 @@ function CreateLogo() {
   };
 
   return (
-    <div className="mt-15 p-8 border rounded-xl 2xl:mx-72">
+    <div className="mt-5 md:mt-15 p-8 border rounded-xl 2xl:mx-72">
       {step == 1 ? (
         <LogoTitle
           onHandleInputChange={(v) => onHandleInputChange("title", v)}
@@ -54,19 +54,22 @@ function CreateLogo() {
 
       <div className="flex items-center justify-between mt-10">
         {step != 1 && (
-          <div className="bg-black-700">
+          <div className="border-2 border-white hover:rounded-sm hover:border-black">
             <Button onClick={() => setStep(step - 1)}>
               <div className="flex gap-4 cursor-pointer">
-                <ArrowLeft /> Previous
+                <ArrowLeft /> <span className="hidden md:inline">Previous</span>
               </div>
             </Button>
           </div>
         )}
-        <Button onClick={() => setStep(step + 1)} className="bg-red-500">
-          <div className="flex gap-4 cursor-pointer">
-            Continue <ArrowRight />
-          </div>
-        </Button>
+
+        <div className="border-2 border-white hover:rounded-sm hover:border-black">
+          <Button onClick={() => setStep(step + 1)} className="bg-red-500">
+            <div className="flex gap-4 cursor-pointer">
+              <span className="hidden md:inline">Continue</span> <ArrowRight />
+            </div>
+          </Button>{" "}
+        </div>
       </div>
     </div>
   );

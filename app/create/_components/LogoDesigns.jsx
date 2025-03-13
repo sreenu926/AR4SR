@@ -9,13 +9,13 @@ function LogoDesigns({ onHandleInputChange, formData }) {
   const [selectedOption, setSelectedOption] = useState(formData?.design?.title);
 
   return (
-    <div className="my-2">
+    <div className="my-0">
       <HeadingDescription
         title={Lookup.LogoDesignTitle}
         description={Lookup.LogoDesignDesc}
       />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-3">
+      <div className="grid grid-cols-3 gap-5 mt-3">
         {LogoDesig.map((design, index) => (
           <div
             key={index}
@@ -28,14 +28,16 @@ function LogoDesigns({ onHandleInputChange, formData }) {
             }}
           >
             <Image
-              className="w-full rounded-xl h-[100px] object-cover"
+              className="w-full rounded-xl h-[34px] sm:h-[100px] object-cover"
               src={design.image}
               alt={design.title}
               width={100}
               height={100}
               unoptimized
             />
-            <p>{design.title}</p>
+            <p className="text-xs line-clamp-1 hover:line-clamp-2 sm:text-sm">
+              {design.title}
+            </p>
           </div>
         ))}
       </div>

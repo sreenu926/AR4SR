@@ -10,8 +10,7 @@ export default {
   LogoDescDesc:
     "Share your ideas, themes, or inspirations to create a logo that perfectly represents your brand or project.",
   LogoIdeaTitle: "Select Your Design Idea",
-  LogoIdeaDesc:
-    "Choose a design style that aligns with your vision, or skip to receive a random suggestion.",
+  LogoIdeaDesc: "Choose a design style that aligns with your vision.",
   LogoDesignTitle: "Choose Your Logo Style",
   LogoDesignDesc:
     "Select the type of logo design that best represents your brands unique identity.",
@@ -42,7 +41,7 @@ export default {
         "⚫ Generate unlimited logos",
         "⚫ Shorter wait times",
         "⚫ Wait time: Less than 10 seconds",
-        "⚫ Only 5 Credits",
+        "⚫ Only 3 Credits",
       ],
       button: "Generate For 1 Credit",
     },

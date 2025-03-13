@@ -45,12 +45,12 @@ export default [
     prompt: `Design a creative and artistic logo with a retro-modern vibe that showcases the brand's identity. Use bold outlines, intricate patterns, and vibrant, contrasting colors to make the design pop. Incorporate thematic elements like food, nature, technology, or lifestyle symbols depending on the brand's niche. The typography should be playful yet clear, complementing the overall composition with a dynamic and balanced layout. Ensure the logo feels unique, versatile, and eye-catching`,
   },
   {
-    title: "Custom Luxury Logo Designs",
+    title: "Luxury Custom Logo Designs",
     image: "/design_8.png",
     prompt: `Create a set of luxurious, elegant, and professional logos with a gold metallic finish on a dark background. Include a variety of themes, such as animals, letters, symbols, and nature-inspired designs. Each logo should convey sophistication, premium quality, and modern aesthetics, suitable for any brand or industry.`,
   },
   {
-    title: "Vintage Logo Designs With Text & Icon",
+    title: "Text & Icon Logo Designs",
     image: "/design_9.png",
     prompt:
       "Design a collection of vintage-inspired logos with a hand-drawn, artistic style. Incorporate a variety of themes, including food, animals, characters, and unique brand elements. Each logo should feature bold typography, intricate details, and a retro aesthetic that is versatile and suitable for diverse brands or businesses.",

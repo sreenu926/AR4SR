@@ -17,31 +17,36 @@ function PricingModel({ formData }) {
   }, [formData]);
 
   return (
-    <div className="my-4">
+    <div className="my-0">
       <HeadingDescription
         title={Lookup.LogoPricingModelTitle}
         description={Lookup.LogoPricingModelDesc}
       />
 
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-col-1 md:grid-cols-2 gap-2 md:gap-10">
         {Lookup.pricingOption.map((pricing, index) => (
           <div
             key={index}
-            className="flex flex-col items-center p-5 border rounded-xl mt-5"
+            className="flex flex-col items-center p-5 border rounded-xl mt-0"
           >
-            <Image
-              src={pricing.icon}
-              alt={pricing.title}
-              width={60}
-              height={60}
-              unoptimized
-            />
-
-            <h2 className="font-medium text-2xl">{pricing.title}</h2>
+            <div className="flex flex-row gap-2 md:flex-col">
+              <div className="w-[30px] md:w-[60px]">
+                <Image
+                  src={pricing.icon}
+                  alt={pricing.title}
+                  width={60}
+                  height={60}
+                  unoptimized
+                />
+              </div>
+              <h2 className="font-medium text-center text-lg md:text-2xl">
+                {pricing.title}
+              </h2>
+            </div>
 
             <div>
               {pricing.features.map((feature, index) => (
-                <h2 key={index} className="text-lg mt-3">
+                <h2 key={index} className="text-sm md:text-lg mt-3">
                   {feature}
                 </h2>
               ))}
@@ -54,7 +59,9 @@ function PricingModel({ formData }) {
                     pricing.title
                   )}`}
                 >
-                  <Button className="bg-red-500 mt-5">{pricing.button}</Button>
+                  <Button className="bg-red-500 mt-5">
+                    <span className="text-xs md:text-sm">{pricing.button}</span>
+                  </Button>
                 </Link>
               </div>
             ) : (

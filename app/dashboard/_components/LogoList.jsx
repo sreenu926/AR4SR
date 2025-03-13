@@ -159,7 +159,7 @@ const LogoList = () => {
           ? logoList.map((logo) => (
               <div
                 key={logo.id}
-                className="hover:scale-105 cursor-pointer transition-all p-2 shadow-xl rounded-xl relative group"
+                className="hover:scale-105 transition-all cursor-pointer p-2 shadow-xl rounded-xl relative group"
               >
                 {/* Delete Icon (Visible on Hover) */}
                 <Trash

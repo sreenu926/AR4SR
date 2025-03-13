@@ -48,15 +48,17 @@ function LogoTitleContent({ onHandleInputChange, formData }) {
   const [title, setTitle] = useState(searchParam?.get("title") ?? "");
 
   return (
-    <div className="my-10">
-      <HeadingDescription
-        title={Lookup?.LogoTitle}
-        description={Lookup.LogoTitleDesc}
-      />
+    <div className="my-0">
+      <div className="mb-5">
+        <HeadingDescription
+          title={Lookup?.LogoTitle}
+          description={Lookup.LogoTitleDesc}
+        />
+      </div>
       <input
         type="text"
         placeholder={Lookup.InputTitlePlaceholder}
-        className="p-4 border rounded-lg mt-5 w-full"
+        className="p-4 border text-center rounded-lg mt-5 w-full"
         value={formData?.title || ""}
         onChange={(e) => onHandleInputChange(e.target.value)}
       />

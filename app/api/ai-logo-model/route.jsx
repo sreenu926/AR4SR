@@ -5,9 +5,6 @@ import { NextResponse } from "next/server";
 import { updateDoc, setDoc, doc } from "firebase/firestore";
 import Replicate from "replicate";
 
-import { getStorage } from "firebase/storage";
-const storage = getStorage();
-
 export async function POST(req) {
   try {
     const { prompt, email, title, desc, type, userCredits } = await req.json();
@@ -18,7 +15,7 @@ export async function POST(req) {
 
     // Generate AI Text Prompt for Logo
     const AiPromptResult = await AILogoPrompt.sendMessage(prompt);
-    const parsedResult = JSON.parse(AiPromptResult.response.text());
+    const parsedResult = await JSON.parse(AiPromptResult.response.text());
     console.log("Parsed AI Prompt:", parsedResult.prompt);
     const AIPrompt = parsedResult.prompt;
 

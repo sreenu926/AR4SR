@@ -52,11 +52,8 @@ const LogoList = () => {
 
       const logos = [];
       querySnapshot.forEach((doc) => {
-        // Include the document ID with the logo data
         logos.push({ id: doc.id, ...doc.data() });
       });
-
-      console.log("Fetched logos:", logos);
       setLogoList(logos.reverse());
     } catch (error) {
       console.error("Error fetching logos:", error);
@@ -99,12 +96,12 @@ const LogoList = () => {
     };
   };
 
-  const downloadImage = (image) => {
+  const downloadImage = (image, title) => {
     if (typeof window === "undefined") return;
-
+    console.log("image.title: ", title);
     const link = document.createElement("a");
     link.href = image;
-    link.download = "AiImage.png";
+    link.download = `${title}.webp`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -125,7 +122,7 @@ const LogoList = () => {
     }
   };
 
-  const ViewLogo = (image) => {
+  const ViewLogo = (image, title) => {
     const imageWindow = window.open("", "_blank");
     if (imageWindow) {
       const img = document.createElement("img");
@@ -134,6 +131,17 @@ const LogoList = () => {
       img.style.maxWidth = "90%"; // Ensure it fits the window
       img.style.height = "90%";
       img.style.borderRadius = "10%";
+      img.style.cursor = "pointer";
+
+      // Image click event to download
+      img.onclick = () => {
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = `${title}.webp`; // Default name as 'logo.png'
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
 
       imageWindow.document.body.style.margin = "0"; // Remove margins
       imageWindow.document.body.style.display = "flex";
@@ -171,7 +179,9 @@ const LogoList = () => {
                 />
 
                 <Image
-                  onClick={() => ViewLogo(logo?.image)}
+                  onClick={() => {
+                    ViewLogo(logo?.image, logo?.title);
+                  }}
                   className="w-full rounded-lg"
                   src={logo.image || "/loading.gif"}
                   alt={logo.title || "Untitled"}
@@ -187,9 +197,9 @@ const LogoList = () => {
               </div>
             ))
           : // Skeleton Effect for loading state
-            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, index) => (
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
               <div
-                key={index}
+                key={item}
                 className="bg-slate-200 animate-pulse rounded-xl w-full h-[200px]"
               ></div>
             ))}
@@ -222,7 +232,7 @@ const LogoList = () => {
                 />
                 <Download
                   onClick={() =>
-                    downloadImage(selectedLogo.image || "/loading.gif")
+                    downloadImage(selectedLogo.image || "/loading.gif", title)
                   }
                   className="absolute top-2 right-2 w-9 h-9 bg-white rounded-full cursor-pointer flex items-center justify-center p-2 hover:border hover:border-gray-500"
                   color="#DE3163"

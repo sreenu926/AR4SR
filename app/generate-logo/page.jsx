@@ -25,7 +25,8 @@ const GenerateLogo = () => {
     if (!formData || hasGenerated) return;
 
     if (modelType != "Free" && userDetail?.credits <= 0) {
-      toast("Not Enough Credits, Please Purchase Some.");
+      toast("Not Enough Credits, Purchase Some...");
+      // router.push("../../create/_components/PaymentPage");
       return;
     }
 

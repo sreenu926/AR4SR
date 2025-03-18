@@ -3,6 +3,8 @@
 import React, { useState, useContext } from "react";
 import { UserDetailContext } from "../../_context/UserDetailContext";
 import Script from "next/script";
+import { db } from "@/configs/FirebaseConfig";
+import { doc, updateDoc } from "firebase/firestore";
 
 declare global {
   interface Window {
@@ -10,7 +12,7 @@ declare global {
   }
 }
 
-const PaymentPage = () => {
+const PaymentPage = ({ onPaymentSuccess }) => {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const AMOUNT = 100; // Fixed amount in INR (1 INR = 1 credit)
   const CREDITS_PER_INR = 1; // Conversion rate for INR to credits
@@ -32,20 +34,32 @@ const PaymentPage = () => {
         name: "AI LOGO GENERATOR",
         description: "Purchase Credits",
         order_id: data.orderId,
-        handler: function (response: any) {
+        handler: async function (response: any) {
           console.log("Payment Successful", response);
-          //Handle successful payment (e.g. update UI, send to server)
           // **Update User Credits After Successful Payment**
-          const purchasedCredits = AMOUNT * CREDITS_PER_INR; // Calculate credits based on payment
-          setUserDetail((prev: { credits: Number }) => ({
-            ...prev,
-            credits: (Number(prev?.credits) || 0) + purchasedCredits, // Add credits to the user's current balance
-          }));
+          try {
+            const purchasedCredits = AMOUNT * CREDITS_PER_INR; // Calculate credits based on payment
+            // Reference to the user's document in Firebase
+            const docRef = doc(db, "users", userDetail?.email);
+            // Update the user's credits in the Firebase database
+            await updateDoc(docRef, {
+              credits: Number(userDetail?.credits || 0) + purchasedCredits, // Increment credits
+            });
 
-          alert(
-            `Payment successful! ${purchasedCredits} credits have been added to your account.`
-          );
+            // Notify parent component of successful payment
+            onPaymentSuccess(purchasedCredits);
+
+            alert(
+              `Payment successful! ${purchasedCredits} credits have been added to your account.`
+            );
+          } catch (dbError) {
+            console.error("Error updating credits in Firebase:", dbError);
+            alert(
+              "Payment successful, but there was an issue updating your credits. Please contact support."
+            );
+          }
         },
+
         prefill: {
           name: userDetail?.name || "John Doe",
           email: userDetail?.email || "johndoe@example.com",

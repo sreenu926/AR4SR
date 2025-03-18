@@ -3,7 +3,6 @@
 import { UserDetailContext } from "@/app/_context/UserDetailContext";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState, useContext } from "react";
 import PaymentPage from "@/app/create/_components/PaymentPage";
 
@@ -19,6 +18,16 @@ const Info = () => {
       // Redirect to the Create New Logo functionality
       window.location.href = "/create";
     }
+  };
+
+  const handlePaymentSuccess = (purchasedCredits) => {
+    // Update the user's credits in the context
+    setUserDetail((prev) => ({
+      ...prev,
+      credits: (prev?.credits || 0) + purchasedCredits,
+    }));
+    // Hide PaymentPage after successful payment
+    setShowPaymentPage(false);
   };
 
   return (
@@ -48,7 +57,7 @@ const Info = () => {
       {/* Conditionally Render PaymentPage */}
       {showPaymentPage && (
         <div className="mt-10 md:mx-90">
-          <PaymentPage />
+          <PaymentPage onPaymentSuccess={handlePaymentSuccess} />
         </div>
       )}
     </div>

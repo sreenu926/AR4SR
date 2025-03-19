@@ -9,8 +9,20 @@ const razorpay = new Razorpay({
 
 export async function POST(request) {
   try {
+    // Parse the request body to get the amount
+    const body = await request.json();
+    const { amount } = body;
+
+    // Validate the amount
+    if (!amount || amount <= 0) {
+      return NextResponse.json(
+        { error: "Invalid amount provided" },
+        { status: 400 }
+      );
+    }
+
     const order = await razorpay.orders.create({
-      amount: 100 * 100, // Amount in paise
+      amount: amount * 100, // Amount in paise
       currency: "INR",
       receipt: "receipt_" + Math.random().toString(36).substring(7),
     });

@@ -14,7 +14,7 @@ declare global {
 
 const PaymentPage = ({ onPaymentSuccess }) => {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
-  const AMOUNT = 100; // Fixed amount in INR (1 INR = 1 credit)
+  const [amount, setAmount] = useState(100); // Default amount in INR
   const CREDITS_PER_INR = 1; // Conversion rate for INR to credits
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -29,7 +29,7 @@ const PaymentPage = ({ onPaymentSuccess }) => {
       //Initialize Razorpay
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: AMOUNT * 100,
+        amount: amount * 100,
         currency: "INR",
         name: "AI LOGO GENERATOR",
         description: "Purchase Credits",
@@ -38,7 +38,7 @@ const PaymentPage = ({ onPaymentSuccess }) => {
           console.log("Payment Successful", response);
           // **Update User Credits After Successful Payment**
           try {
-            const purchasedCredits = AMOUNT * CREDITS_PER_INR; // Calculate credits based on payment
+            const purchasedCredits = amount * CREDITS_PER_INR; // Calculate credits based on payment
             // Reference to the user's document in Firebase
             const docRef = doc(db, "users", userDetail?.email);
             // Update the user's credits in the Firebase database
@@ -79,21 +79,37 @@ const PaymentPage = ({ onPaymentSuccess }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-[300px] h-[250px] bg-gray-100">
-      {/* Razorpay script is loaded here */}
-      <Script src="https://checkout.razorpay.com/v1/checkout.js" />
-      <div className="p-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Payment Page</h1>
-        <p className="mb-4">Amount to pay: {AMOUNT} INR</p>
-        <button
-          onClick={handlePayment}
-          disabled={isProcessing}
-          className={`px-4 py-2 ${
-            isProcessing ? "bg-gray-400" : "bg-blue-500 mx-10 hover:bg-blue-600"
-          } text-white rounded`}
-        >
-          {isProcessing ? "Processing..." : "Pay Now"}
-        </button>
+    <div className="flex flex-col items-center justify-center w-[300px] h-[250px] bg-white">
+      <div className="">
+        {/* Razorpay script is loaded here */}
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+        <div className="p-6 bg-yellow-100 border rounded-lg shadow-md">
+          <h1 className="text-2xl mx-auto text-center text-white bg-black rounded-lg p-1 w-[200px] font-bold mb-4">
+            Payment Page
+          </h1>
+          <p className="mb-4 text-center">Amount to pay (in INR):</p>
+
+          {/* Input field for the user to enter the amount */}
+          <input
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(Number(e.target.value))}
+            min="1"
+            className="w-[100px] mx-20 px-4 py-2 bg-white border border-gray-300 rounded mb-4"
+          />
+
+          <button
+            onClick={handlePayment}
+            disabled={isProcessing}
+            className={`px-4 py-2 ${
+              isProcessing
+                ? "bg-gray-400"
+                : "bg-blue-500 mx-20 hover:bg-blue-600"
+            } text-white rounded`}
+          >
+            {isProcessing ? "Processing..." : "Pay Now"}
+          </button>
+        </div>
       </div>
     </div>
   );

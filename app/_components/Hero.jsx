@@ -30,20 +30,21 @@ function Hero() {
       </div>
       <div className="flex w-[100px] md:w-[250px] justify-center gap-4">
         <Image
-          unoptimized
-          src={"/AR4SR-1.png"}
-          alt="synaptra"
+          src="/AR4SR-1.png"
+          alt="AR4SR-1"
           width={250}
           height={200}
           className="rounded-lg border-2 border-gray-200"
+          unoptimized
         />
+
         <Image
-          unoptimized
-          src={"/AR4SR-2.png"}
-          alt="synaptra"
+          src="/AR4SR-2.png"
+          alt="AR4SR-2"
           width={250}
           height={200}
           className="rounded-lg border-2 border-gray-200"
+          unoptimized
         />
       </div>
     </div>

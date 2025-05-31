@@ -18,7 +18,7 @@ function Header() {
       {/* Logo */}
       <Link href={"/"}>
         <Image
-          src="/assets/logo.png"
+          src="/logo.png"
           alt="logo"
           width={110}
           height={10}
@@ -32,13 +32,13 @@ function Header() {
         {user ? (
           <>
             {/* Dashboard Button */}
-            <button
+            {/* <button
               className="flex border-1 border-gray-100 p-2 rounded-lg bg-amber-700 text-white items-center gap-2 hover:bg-black cursor-pointer transition"
               onClick={() => router.push("/dashboard")}
             >
               <LayoutDashboard size={20} />
               <span>Dashboard</span>
-            </button>
+            </button> */}
 
             {/* Clerk UserButton */}
             <UserButton signOutOptions={{ redirectUrl: "/" }} />
@@ -50,7 +50,7 @@ function Header() {
           >
             <Image
               className="rounded-full"
-              src="/assets/user_icon.png"
+              src="/user_icon.png"
               width={30}
               height={10}
               alt="user icon"
@@ -74,7 +74,7 @@ function Header() {
         <div className="absolute right-4 top-16 bg-white shadow-md border rounded-lg p-4 flex flex-col gap-3 sm:hidden">
           {user ? (
             <>
-              <button
+              {/* <button
                 className="flex border-2 border-gray-500 p-2 rounded-lg bg-sky-500 text-white items-center gap-2 hover:bg-black cursor-pointer transition"
                 onClick={() => {
                   router.push("/dashboard");
@@ -83,7 +83,7 @@ function Header() {
               >
                 <LayoutDashboard size={20} />
                 <span>Dashboard</span>
-              </button>
+              </button> */}
               <div className="flex items-center mx-auto gap-2">
                 <span className="text-sm font-medium">
                   {user?.emailAddresses[0]?.emailAddress.split("@")[0]}
@@ -98,7 +98,7 @@ function Header() {
             >
               <Image
                 className="rounded-full"
-                src="/assets/user_icon.png"
+                src="/user_icon.png"
                 width={32}
                 height={32}
                 alt="user icon"

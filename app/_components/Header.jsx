@@ -18,7 +18,7 @@ function Header() {
       {/* Logo */}
       <Link href={"/"}>
         <Image
-          src="/logo.png"
+          src="/assets/logo.png"
           alt="logo"
           width={110}
           height={10}
@@ -50,7 +50,7 @@ function Header() {
           >
             <Image
               className="rounded-full"
-              src="/user_icon.png"
+              src="/assets/user_icon.png"
               width={30}
               height={10}
               alt="user icon"
@@ -98,7 +98,7 @@ function Header() {
             >
               <Image
                 className="rounded-full"
-                src="/user_icon.png"
+                src="/assets/user_icon.png"
                 width={32}
                 height={32}
                 alt="user icon"

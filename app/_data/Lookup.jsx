@@ -1,8 +1,9 @@
 export default {
-  HeroHeading: "AI Logo Maker",
-  HeroSubheading: "Perfect Logos for Apps, Businesses, and Websites",
+  HeroHeading: "AR4SR",
+  HeroSubheading: "Augmented Reality for Speech Rehabilitation",
   HeroDesc:
-    "Craft unique and professional logos effortlessly with our AI-powered tool. Perfect for apps, businesses, websites, and more!",
+    "AR4SR is an innovative augmented reality (AR) platform designed to enhance speech rehabilitation. Leveraging advanced AR technology, it provides interactive and immersive tools to support individuals in improving their speech and communication skills through tailored exercises and real-time feedback.",
+
   InputTitlePlaceholder: "Enter your Logo Name",
   LogoTitle: "Logo Title",
   LogoTitleDesc: "Add Your Business, App, or Website Name for a Custom Logo",

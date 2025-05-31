@@ -14,15 +14,16 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="px-10 lg:px-32 xl:px-48 2xl:px-56 p-4 flex justify-between items-center shadow-sm">
+    <div className="bg-purple-700 px-4 lg:px-12 xl:px-20 2xl:px-32 p-0 flex justify-between items-center shadow-sm border-b border-gray-500">
       {/* Logo */}
       <Link href={"/"}>
         <Image
           unoptimized
-          src={"/logo.svg"}
+          src={"/logo.png"}
           alt="logo"
-          width={100}
+          width={110}
           height={0}
+          className="rounded-lg border-2 border-white"
         />
       </Link>
 
@@ -32,7 +33,7 @@ function Header() {
           <>
             {/* Dashboard Button */}
             <button
-              className="flex border-2 border-gray-500 p-2 rounded-lg bg-sky-500 text-white items-center gap-2 hover:bg-black cursor-pointer transition"
+              className="flex border-1 border-gray-100 p-2 rounded-lg bg-amber-700 text-white items-center gap-2 hover:bg-black cursor-pointer transition"
               onClick={() => router.push("/dashboard")}
             >
               <LayoutDashboard size={20} />
@@ -45,13 +46,13 @@ function Header() {
         ) : (
           <button
             onClick={openSignIn}
-            className="flex items-center gap-2 border-2 border-gray-500 bg-sky-500 p-2 rounded-lg cursor-pointer hover:text-white hover:bg-black transition"
+            className="flex items-center gap-2 border-2 border-white-500 bg-sky-500 p-2 rounded-lg cursor-pointer hover:text-white hover:bg-black transition"
           >
             <Image
               className="rounded-full"
               src={"/user_icon.png"}
-              width={32}
-              height={32}
+              width={30}
+              height={0}
               alt="user icon"
               unoptimized
             />
@@ -65,7 +66,7 @@ function Header() {
         className="sm:hidden p-2 border-2 border-gray-500 rounded-lg bg-sky-500 text-white hover:bg-black transition"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        <Menu size={24} />
+        <Menu size={20} />
       </button>
 
       {/* Dropdown Menu for Mobile */}
@@ -75,7 +76,10 @@ function Header() {
             <>
               <button
                 className="flex border-2 border-gray-500 p-2 rounded-lg bg-sky-500 text-white items-center gap-2 hover:bg-black cursor-pointer transition"
-                onClick={() => router.push("/dashboard")}
+                onClick={() => {
+                  router.push("/dashboard");
+                  setMenuOpen(!menuOpen);
+                }}
               >
                 <LayoutDashboard size={20} />
                 <span>Dashboard</span>

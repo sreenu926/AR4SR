@@ -9,8 +9,8 @@ const host_Grotesk = Host_Grotesk({
 });
 
 export const metadata = {
-  title: "AI-LOGO-GENERATOR",
-  description: "AI-LOGO_GENERATOR",
+  title: "AR for Speech Rehabilitation",
+  description: "AR for Speech Rehabilitation",
 };
 
 export default function RootLayout({ children }) {

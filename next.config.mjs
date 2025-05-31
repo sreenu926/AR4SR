@@ -9,14 +9,9 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "firebasestorage.googleapis.com",
-      },
-    ],
-  },
+  // No need to configure external image domains since you're using local images
+  reactStrictMode: true,
+  swcMinify: true,
 };
 
 export default nextConfig;

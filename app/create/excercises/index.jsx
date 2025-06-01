@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 const exercises = [
   {
     name: "Eyebrow Raise",
-    route: "/exercises/eyebrow",
+    route: "/create/exercises/eyebrow",
     instructions: [
       "Keep your face relaxed.",
       "Raise both eyebrows as high as possible.",
@@ -15,7 +15,7 @@ const exercises = [
   },
   {
     name: "Frown",
-    route: "/exercises/frown",
+    route: "/create/exercises/frown",
     instructions: [
       "Try to draw your eyebrows together.",
       "Frown using your forehead muscles.",
@@ -25,7 +25,7 @@ const exercises = [
   },
   {
     name: "Smile",
-    route: "/exercises/smile",
+    route: "/create/exercises/smile",
     instructions: [
       "Smile broadly while showing your teeth.",
       "Keep lips relaxed and symmetrical.",
@@ -35,7 +35,7 @@ const exercises = [
   },
   {
     name: "P-sound Pronunciation",
-    route: "/exercises/psound", // matches folder name: `app/exercises/psound/page.jsx`
+    route: "/create/exercises/psound", // matches folder name: `app/exercises/psound/page.jsx`
     instructions: [
       "Purse your lips gently together.",
       "Say 'Puh' with clear burst of air.",

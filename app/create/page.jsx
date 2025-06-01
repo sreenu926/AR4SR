@@ -1,9 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import LogoTitle from "./_components/exercises";
-import LogoColorPallete from "./_components/LogoColorPallete";
-import LogoDesigns from "./_components/LogoDesigns";
-import LogoIdea from "./_components/LogoIdea";
+import LogoTitle from "./excercises";
 
 function CreateLogo() {
   const [step, setStep] = useState(1);
@@ -19,21 +16,6 @@ function CreateLogo() {
       {step == 1 ? (
         <LogoTitle
           onHandleInputChange={(v) => onHandleInputChange("title", v)}
-          formData={formData}
-        />
-      ) : step == 2 ? (
-        <LogoColorPallete
-          onHandleInputChange={(v) => onHandleInputChange("palette", v)}
-          formData={formData}
-        />
-      ) : step == 3 ? (
-        <LogoDesigns
-          onHandleInputChange={(v) => onHandleInputChange("design", v)}
-          formData={formData}
-        />
-      ) : step == 4 ? (
-        <LogoIdea
-          onHandleInputChange={(v) => onHandleInputChange("idea", v)}
           formData={formData}
         />
       ) : null}

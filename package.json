@@ -11,6 +11,8 @@
   "dependencies": {
     "@clerk/nextjs": "^6.12.2",
     "@google/generative-ai": "^0.22.0",
+    "@mediapipe/camera_utils": "^0.3.1675466862",
+    "@mediapipe/face_mesh": "^0.4.1633559619",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
     "@stripe/react-stripe-js": "^3.4.0",

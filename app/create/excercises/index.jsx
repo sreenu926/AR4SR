@@ -34,7 +34,7 @@ const exercises = [
     ],
   },
   {
-    name: "P-sound Pronunciation",
+    name: "P-Sound Pronunciation",
     route: "/create/exercises/psound", // matches folder name: `app/exercises/psound/page.jsx`
     instructions: [
       "Purse your lips gently together.",

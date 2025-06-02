@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 export default function EyebrowPage() {
   const videoRef = useRef(null);
@@ -9,6 +10,7 @@ export default function EyebrowPage() {
   const [streaming, setStreaming] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const cleanupRef = useRef(false);
+  const router = useRouter();
 
   // Shared cleanup: stops camera & closes FaceMesh, clears canvas, resets flags
   const cleanup = useCallback(() => {
@@ -204,7 +206,8 @@ export default function EyebrowPage() {
   // “Stop” button callback: run cleanup
   const stopCamera = useCallback(() => {
     cleanup();
-  }, [cleanup]);
+    router.push("/create?title=exercises");
+  }, [cleanup, router]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900 p-6 flex flex-col items-center justify-center">
